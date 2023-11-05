@@ -78,7 +78,6 @@ public class MyAsyncApp implements AutoCloseable {
                 .toCompletableFuture()
                 .thenApplyAsync(response -> {
                     try {
-                        System.out.println("weather found");
                         WeatherData weatherData = objectMapper.readValue(response.getResponseBody(), WeatherData.class);
                         return "-".repeat(100) + "\n" +
                                 "Temperature: " + (Math.round(weatherData.getMain().getTemp() - 273.15)) + " C\n"

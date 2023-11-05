@@ -1,0 +1,70 @@
+﻿<component name="ArtifactManager">
+  <artifact type="jar" name="AsyncNetworking.main:jar">
+    <output-path>$PROJECT_DIR$</output-path>
+    <root id="archive" name="AsyncNetworking.main.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="AsyncNetworking.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.60.Final/48bd240fa29a4410e22b64b6d4c26429577d6f4/netty-transport-native-epoll-4.1.60.Final-linux-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.2/74548703f9851017ce2f556066659438019e7eb5/jakarta.activation-1.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j18-impl/2.18.0/12ac9a08c4115746d8f52f9b01d32c25d9a41add/log4j-slf4j18-impl-2.18.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.60.Final/94350c81cc7a78212fb0f52a500f22d1aa9c44d8/netty-transport-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.3/d9fb7a7926ffa635b3dcaa5049fb2bfa25b3e7d0/reactive-streams-1.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.20.0/1fe6082e660daf07c689a89c94dc0f49c26b44bb/log4j-api-2.20.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.6.0/38166a23afb5bd5520f739b87b3be87f7f0fb96d/commons-cli-1.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.60.Final/9d213d090deeca2541ad6827eb3345bcd6e1e701/netty-buffer-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.60.Final/b1f14b5d5b0e52e4385f1cd1a6c4934521a8ed3c/netty-transport-native-kqueue-4.1.60.Final-osx-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.60.Final/354ca712f909fcd9d8a22e16bf84afcfdc44ec8d/netty-codec-http-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.60.Final/fad098b98df67e50135c67e4a26af56c7800daf4/netty-transport-native-unix-common-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.60.Final/caba5004618d27386ee9d5ee8b23b09b6548fb0b/netty-resolver-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.json/json/20230227/7a0d4aca76513d8ce81f9b044ce8126b84809ad8/json-20230227.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.60.Final/b740d51babe3312a33b505cd8b62c02f3731b2e3/netty-codec-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.20.0/eb2a9a47b1396e00b5eee1264296729a70565cc0/log4j-core-2.20.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.15.3/60d600567c1862840397bf9ff5a92398edc5797b/jackson-core-2.15.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client-netty-utils/2.12.3/ad99d8622931ed31367d0fef7fa17eb62e033fb3/async-http-client-netty-utils-2.12.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.60.Final/14e28bab0173be10c9631a85069636a0d0221dfe/netty-handler-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.60.Final/44540113f7148f1014be879663501db8da1c37b0/netty-common-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.8.0-beta4/83b0359d847ee053d745be7ec0d8e9e8a44304b4/slf4j-api-1.8.0-beta4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client/2.12.3/6dfc91814cc8b3bc3327246d0e5df36911b9a623/async-http-client-2.12.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.15.3/79baf4e605eb3bbb60b1c475d44a7aecceea1d60/jackson-annotations-2.15.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.15.3/a734bc2c47a9453c4efa772461a3aeb273c010d9/jackson-databind-2.15.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.typesafe.netty/netty-reactive-streams/2.0.4/f77c8eaa7d5e2f2160b6d21ba385cf726f164b2/netty-reactive-streams-2.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.60.Final/6f4573281df659265bd709fd10471c3e00ef6c70/netty-codec-socks-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.60.Final/2352f12826400e5db64b36fd951508ce9a61c196/netty-handler-proxy-4.1.60.Final.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.15.3" />
+      <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.15.3" />
+      <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.15.3" />
+      <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-slf4j18-impl:2.18.0" />
+      <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-core:2.20.0" />
+      <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-api:2.20.0" />
+      <element id="library" level="project" name="Gradle: org.asynchttpclient:async-http-client:2.12.3" />
+      <element id="library" level="project" name="Gradle: commons-cli:commons-cli:1.6.0" />
+      <element id="library" level="project" name="Gradle: org.json:json:20230227" />
+      <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.8.0-beta4" />
+      <element id="library" level="project" name="Gradle: org.asynchttpclient:async-http-client-netty-utils:2.12.3" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-handler-proxy:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-codec-http:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: com.typesafe.netty:netty-reactive-streams:2.0.4" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-handler:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-codec-socks:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-transport-native-kqueue:osx-x86_64:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: org.reactivestreams:reactive-streams:1.0.3" />
+      <element id="library" level="project" name="Gradle: com.sun.activation:jakarta.activation:1.2.2" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-buffer:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-codec:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-transport:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-common:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-resolver:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: io.netty:netty-transport-native-unix-common:4.1.60.Final" />
+      <element id="library" level="project" name="Gradle: org.junit.jupiter:junit-jupiter:5.9.1" />
+      <element id="library" level="project" name="Gradle: org.junit.jupiter:junit-jupiter-params:5.9.1" />
+      <element id="library" level="project" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.9.1" />
+      <element id="library" level="project" name="Gradle: org.junit.platform:junit-platform-commons:1.9.1" />
+      <element id="library" level="project" name="Gradle: org.opentest4j:opentest4j:1.2.0" />
+      <element id="library" level="project" name="Gradle: org.junit.jupiter:junit-jupiter-engine:5.9.1" />
+      <element id="library" level="project" name="Gradle: org.junit.platform:junit-platform-engine:1.9.1" />
+    </root>
+  </artifact>
+</component>
