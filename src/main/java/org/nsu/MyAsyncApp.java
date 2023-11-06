@@ -19,10 +19,21 @@ import org.nsu.dto.WeatherData;
 
 @Log4j2
 public class MyAsyncApp implements AutoCloseable {
+
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final AsyncHttpClient client;
 
-    public MyAsyncApp(int connectionTimeout, int requestTimeout ) {
+    private final String weatherAPIKey;
+
+    private final String hitsAPIKey;
+
+    private final String placesAPIKey;
+
+    public MyAsyncApp(int connectionTimeout, int requestTimeout, String weatherAPIKey, String hitsAPIKey,
+            String placesAPIKey) {
+        this.hitsAPIKey = "key=" + hitsAPIKey;
+        this.weatherAPIKey = "appid=" + weatherAPIKey;
+        this.placesAPIKey = "apikey=" + placesAPIKey;
         client = new DefaultAsyncHttpClient(new DefaultAsyncHttpClientConfig.Builder()
                 .setConnectTimeout(connectionTimeout)
                 .setRequestTimeout(requestTimeout)
@@ -30,15 +41,21 @@ public class MyAsyncApp implements AutoCloseable {
     }
 
     public static void main(String[] args) {
-        try(MyAsyncApp myAsyncApp = new MyAsyncApp(5000,10000)) {
-            myAsyncApp.findHits(args[0]).thenAcceptAsync(hit -> System.out.println(myAsyncApp.findWeatherAndPlaces(hit).join())).join();
+        System.out.println("Enter a request");
+        try (MyAsyncApp myAsyncApp = new MyAsyncApp(5000, 20000, "d8c43d67785771c32ee49a48ecf8c2ea"
+                , "2d259c4a-082b-45c6-a46a-71e519287333",
+                "5ae2e3f221c38a28845f05b6d94ab5fc99f1f1ef326006c5a505de88")) {
+            Scanner scanner = new Scanner(System.in);
+            myAsyncApp.findHits(scanner.nextLine())
+                    .thenAcceptAsync(hit -> System.out.println(myAsyncApp.findWeatherAndPlaces(hit).join())).join();
         }
     }
 
     public CompletableFuture<Hit> findHits(String suggestion) {
         return client.prepareGet(
-                        "https://graphhopper.com/api/1/geocode?q={suggestion}&locale=en&key=2d259c4a-082b-45c6-a46a-71e519287333".replace(
-                                "{suggestion}", suggestion))
+                        "https://graphhopper.com/api/1/geocode?q={suggestion}&locale=en&{key}"
+                                .replace("{suggestion}", suggestion)
+                                .replace("{key}", hitsAPIKey))
                 .execute()
                 .toCompletableFuture()
                 .thenApply(response -> {
@@ -48,7 +65,9 @@ public class MyAsyncApp implements AutoCloseable {
                         List<Hit> hits = myResponse.getHits();
 
                         for (int i = 0; i < hits.size(); i++) {
-                            System.out.println(i + 1 + " Name: " + hits.get(i).getName());
+                            System.out.println(
+                                    i + 1 + " Name: " + hits.get(i).getName() + " lon = " + hits.get(i).getPoint()
+                                            .getLng() + " lat = " + hits.get(i).getPoint().getLat());
                         }
                         System.out.println("Select place");
 
@@ -71,9 +90,10 @@ public class MyAsyncApp implements AutoCloseable {
 
     public CompletableFuture<String> findWeather(Hit hit) {
         return client.prepareGet(
-                        "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=d8c43d67785771c32ee49a48ecf8c2ea"
+                        "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&{key}"
                                 .replace("{lat}", String.valueOf(hit.getPoint().getLat()))
-                                .replace("{lon}", String.valueOf(hit.getPoint().getLng())))
+                                .replace("{lon}", String.valueOf(hit.getPoint().getLng()))
+                                .replace("{key}", weatherAPIKey))
                 .execute()
                 .toCompletableFuture()
                 .thenApplyAsync(response -> {
@@ -93,9 +113,10 @@ public class MyAsyncApp implements AutoCloseable {
 
     public List<Feature> findPlaces(Hit hit) {
         return client.prepareGet(
-                        "http://api.opentripmap.com/0.1/en/places/radius?radius=100&lon={lon}&lat={lat}&apikey=5ae2e3f221c38a28845f05b6d94ab5fc99f1f1ef326006c5a505de88"
+                        "http://api.opentripmap.com/0.1/ru/places/radius?radius=150&lon={lon}&lat={lat}&{key}"
                                 .replace("{lat}", String.valueOf(hit.getPoint().getLat()))
-                                .replace("{lon}", String.valueOf(hit.getPoint().getLng())))
+                                .replace("{lon}", String.valueOf(hit.getPoint().getLng()))
+                                .replace("{key}",placesAPIKey ))
                 .execute()
                 .toCompletableFuture()
                 .thenApplyAsync(response -> {
@@ -109,19 +130,21 @@ public class MyAsyncApp implements AutoCloseable {
 
     public CompletableFuture<String> findDescription(Feature feature) {
         return client.prepareGet("http://api.opentripmap.com/0.1/ru/places/xid/" + feature.getProperties().getXid()
-                        + "?apikey=5ae2e3f221c38a28845f05b6d94ab5fc99f1f1ef326006c5a505de88")
+                        + "?" + placesAPIKey)
                 .execute()
                 .toCompletableFuture().thenApplyAsync(response -> {
                     try {
-                        PlaceDescription placeDescription = objectMapper.readValue(response.getResponseBody(), PlaceDescription.class);
-                        if (placeDescription.getName() != null && !placeDescription.getName().isEmpty()){
+                        PlaceDescription placeDescription = objectMapper.readValue(response.getResponseBody(),
+                                PlaceDescription.class);
+                        if (placeDescription.getName() != null && !placeDescription.getName().isEmpty()) {
                             return "Name: " + placeDescription.getName() + "\n"
-                                    + (placeDescription.getInfo() != null ? "Description: " + placeDescription.getInfo().getDescr()
+                                    + (placeDescription.getInfo() != null ? "Description: " + placeDescription.getInfo()
+                                    .getDescr()
                                     : "");
-                        }else {
+                        } else {
                             return "";
                         }
-                    } catch (Throwable e){
+                    } catch (Throwable e) {
                         throw new RuntimeException(e);
                     }
                 });
@@ -134,12 +157,11 @@ public class MyAsyncApp implements AutoCloseable {
                 (res1, res2) -> res1 + res2);
     }
 
-
     @Override
     public void close() {
         try {
             client.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             log.error(e);
             throw new RuntimeException(e);
         }
