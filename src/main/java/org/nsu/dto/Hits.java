@@ -6,6 +6,7 @@ import lombok.Data;
 
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Hits {
 
     private List<Hit> hits;
