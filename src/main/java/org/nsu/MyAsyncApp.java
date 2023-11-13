@@ -11,12 +11,14 @@ import lombok.extern.log4j.Log4j2;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClientConfig;
+import org.jsoup.Jsoup;
 import org.nsu.dto.PlaceDescription;
 import org.nsu.dto.FeatureCollection;
 import org.nsu.dto.FeatureCollection.Feature;
 import org.nsu.dto.Hits;
 import org.nsu.dto.Hits.Hit;
 import org.nsu.dto.WeatherData;
+
 
 @Log4j2
 public class MyAsyncApp implements AutoCloseable {
@@ -61,10 +63,8 @@ public class MyAsyncApp implements AutoCloseable {
                 .toCompletableFuture()
                 .thenApply(response -> {
                     try {
-                        System.out.println(Charset.defaultCharset().name());
                         Hits myResponse = objectMapper.readValue(
                                 new String(response.getResponseBodyAsBytes(), Charset.defaultCharset()), Hits.class);
-                        System.out.println(myResponse.getLocale());
                         List<Hit> hits = myResponse.getHits();
                         if (hits.isEmpty()) {
                             System.out.println("No hits?");
@@ -110,6 +110,7 @@ public class MyAsyncApp implements AutoCloseable {
                 .execute()
                 .toCompletableFuture()
                 .thenApplyAsync(response -> {
+
                     try {
                         WeatherData weatherData = objectMapper.readValue(
                                 new String(response.getResponseBodyAsBytes(), Charset.defaultCharset()),
@@ -119,6 +120,7 @@ public class MyAsyncApp implements AutoCloseable {
                                 + "Ощущается как: " + (Math.round(weatherData.getMain().getFeelsLike() - 273.15))
                                 + " C\n"
                                 + "Облачность: " + weatherData.getClouds().getAll() + "%\n"
+                                + "Давление: " + weatherData.getMain().getGrndLevel() * 0.75 + " мм рт. ст.\n"
                                 + "Описание: " + weatherData.getWeather()[0].getDescription() + "\n"
                                 + "-".repeat(100) + "\n";
                     } catch (Throwable e) {
@@ -158,11 +160,12 @@ public class MyAsyncApp implements AutoCloseable {
                         PlaceDescription placeDescription = objectMapper.readValue(
                                 new String(response.getResponseBodyAsBytes(), Charset.defaultCharset()),
                                 PlaceDescription.class);
+
                         if (placeDescription.getName() != null && !placeDescription.getName().isEmpty()) {
                             return "Название: " + placeDescription.getName() +" Тип :" + placeDescription.getKinds() + "\n"
-                                    + (placeDescription.getInfo() != null ? "Описание: " + placeDescription.getInfo()
-                                    .getDescr()
-                                    : "");
+                                    + (placeDescription.getInfo() != null ? "Описание: " + Jsoup.parse(placeDescription.getInfo()
+                                    .getDescr()).text() + "\n"
+                                    : "\n");
                         } else {
                             return "";
                         }
